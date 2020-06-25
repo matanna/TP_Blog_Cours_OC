@@ -1,0 +1,19 @@
+h1 {
+    color: blue;
+    text-align: center;
+    background-color: grey;
+}
+
+h3, p{
+    text-align: center;
+}
+
+.post{
+    border-bottom: 1px solid black;
+}
+
+span {
+    font-style: italic;
+    font-size: 0.8em;
+}
+
