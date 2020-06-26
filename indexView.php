@@ -11,18 +11,18 @@
         <h1>MON 1er BLOG</h1>
 
         <?php
-        while($data = $req -> fetch())
+        while($one_post = $posts -> fetch())
         {
         ?>
             <div class='post'>
-                <h3><span><?= $data['creation_date_fr']. '</span> : ' . htmlspecialchars($data['title']); ?></h3>
-                <p><?= nl2br(htmlspecialchars($data['content'])); ?></p>
+                <h3><span><?= $one_post['creation_date_fr']. '</span> : ' . htmlspecialchars($one_post['title']); ?></h3>
+                <p><?= nl2br(htmlspecialchars($one_post['content'])); ?></p>
                 
-                <p><a href="commentaire.php?id=<?= $data['id']; ?>">Lien vers les commentaires</a></p>
+                <p><a href="post.php?id=<?= $one_post['id']; ?>">Lien vers les commentaires</a></p>
             </div>
         <?php
         }
-        $req -> closeCursor();
+        $posts -> closeCursor();
         ?>
 
     </body>
