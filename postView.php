@@ -1,29 +1,23 @@
-<!DOCTYPE html>
-<html lang='fr'>
+<?php $title = 'Article'; ?>
 
-    <head>
-        <meta charset='utf-8' />
-        <title>Article</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
+<?php ob_start(); ?>
 
-    <body>
-        <div class='post'>
-            <h1><span><?= $post['creation_date_fr']. '</span> : ' . $post['title'] ; ?></h1>
-            <p><?= $post['content']; ?></p>
-            <p><a href="index.php">Retour à la page d'accueil</a></p>
-        </div>
-        
-        <?php
-        while($comment = $comments -> fetch())
-        {
-        ?>
-            <p><?= $comment['comment_date_fr']; ?> - <?= $comment['author']; ?> : <?= nl2br(htmlspecialchars($comment['comment'])); ?></p>
-        <?php
-        }
-        ?>   
+    <div class='posts'>
+        <h1><span><?= $post['creation_date_fr']. '</span> : ' . $post['title'] ?></h1>
+        <p><?= $post['content']; ?></p>
+        <p><a href="index.php">Retour à la page d'accueil</a></p>
+    </div>
+    
+    <?php
+    while($comment = $comments -> fetch())
+    {
+    ?>
+        <p><?= $comment['comment_date_fr'] ?> - <?= $comment['author'] ?> : <?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+    <?php
+    }
+    $comments -> closeCursor();
+    ?>   
 
+<?php $content = ob_get_clean(); ?>
 
-</body>
-
-</html>
+<?php require('template.php'); ?>
