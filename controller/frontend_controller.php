@@ -1,26 +1,41 @@
 <?php
 
-require('model/frontend_model.php');
+require_once('model/PostManager.php');
+require_once('model/CommentManager.php');
 
 function listPosts()
 {
-    $posts = getPosts();
+    $postManager = new PostManager();
+    $posts = $postManager -> getPosts();
 
     require('view/frontend_view/listPostsView.php');
 }
 
+function maxPostId()
+{
+    $postManager = new PostManager();
+
+    $maxPostId = $postManager -> getMaxPostId();
+    return $maxPostId;
+}
+
 function post()
 {
-    $post = getPost($_GET['id']);
+    $postManager = new PostManager();
+    $post = $postManager -> getPost($_GET['id']);
         
-    $comments = getComments($_GET['id']);
+    $commentManager = new CommentManager(); 
+    $comments = $commentManager -> getComments($_GET['id']);
+
    
     require('view/frontend_view/postView.php');
 }
 
 function addComment($author, $comment, $postId)
 {
-    $affectedLines = insertComment($author, $comment, $postId);
+
+    $commentManager = new CommentManager();
+    $affectedLines = $commentManager -> insertComment($author, $comment, $postId);
 
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -33,7 +48,8 @@ function addComment($author, $comment, $postId)
 
 function addNewPost($titlePost, $contentPost)
 {
-    $affectedLines = insertPost($titlePost, $contentPost);
+    $postManager = new PostManager();
+    $affectedLines = $postManager -> insertPost($titlePost, $contentPost);
 
     if ($affectedLines === false) {
         throw new Exception('L\'ajout du post n\'a pas fonctionné');

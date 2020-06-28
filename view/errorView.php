@@ -5,7 +5,7 @@
    <h2>Oups !!!</h2>
 
    <p><?= $errorMessage ?></p>
-   
+
 
 <?php $content = ob_get_clean(); ?>
 
