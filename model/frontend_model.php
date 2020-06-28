@@ -1,3 +1,4 @@
+
 <?php
 
 function getPosts()
@@ -23,7 +24,12 @@ function getComments($postId)
 {
     $db = dbConnect();
 
-    $req = $db -> prepare('SELECT DATE_FORMAT(comment_date, \'le %d/%m/%Y à %Hh%im%ss \') AS comment_date_fr, author, comment FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
+    $req = $db -> prepare('SELECT DATE_FORMAT(comment_date, \'le %d/%m/%Y à %Hh%im%ss \') AS comment_date_fr, 
+                                              author, comment 
+                                              FROM comments 
+                                              WHERE post_id = ? 
+                                              ORDER BY comment_date DESC'
+                         );
     $req -> execute(array($postId));
     $comments = $req;
     return $comments;

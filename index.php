@@ -1,36 +1,31 @@
-<?php
+<?php 
 
-require('controller.php');
+require 'controller/frontend_controller.php';
 
-if(isset($_GET['action'])) {
+if (isset($_GET['action'])) {
     
-    if($_GET['action'] == 'listPosts'){
+    if ($_GET['action'] == 'listPosts') {
         
         listPosts();
-    }
-    elseif($_GET['action'] == 'post'){
+    } elseif ($_GET['action'] == 'post') {
         
-        if(isset($_GET['id']) AND $_GET['id'] > 0){
+        if (isset($_GET['id']) AND $_GET['id'] > 0) {
             
             $max_postId= getMaxPostId();
     
-            if($_GET['id'] <= $max_postId){
+            if ($_GET['id'] <= $max_postId) {
                 
                 post();
-            }
-            else {
+            } else {
                 echo 'Oups !!! Ce billet n\'existe pas !! ';
             } 
-        }
-        else{
+        } else {
             echo 'Erreur : Aucun identifiant de billet est envoyé';
         }
-    }
-    else{
+    } else {
         listPosts();
     }
-}
-else{
+} else {
     listPosts();
 }
 
