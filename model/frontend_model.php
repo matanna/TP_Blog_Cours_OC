@@ -60,18 +60,23 @@ function getMaxPostId()
     return $max_postId['max_id'];
 }
 
+function insertPost($titlePost, $contentPost)
+{
+    $db = dbConnect();
+   
+    $req = $db -> prepare ('INSERT INTO posts(title, content, creation_date)
+                           VALUES (?, ?, NOW())');
+    $req -> execute(array($titlePost, $contentPost));
+
+    $affectedLines = $req;
+    return $affectedLines;
+}
+
 function dbConnect()
 {
-    try
-    {
-        $db = new PDO('mysql:host=localhost;port=3308;dbname=blog;charset=utf8','root','', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        return $db;
-    }
-    catch (exception $e)
-    {
-        die('Erreur : ' . $e->getMessage());
-    }
-
+    $db = new PDO('mysql:host=localhost;port=3308;dbname=blog;charset=utf8','root','', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    
+    return $db;
 }
 
 ?>

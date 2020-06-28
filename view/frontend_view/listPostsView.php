@@ -21,6 +21,9 @@ while($one_post = $posts -> fetch())
 }
 $posts -> closeCursor();
 ?>
+
+<p><a href="index.php?action=newPost" >Ajouter un article ...</a></p>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/frontend_view/template.php'); ?>

@@ -28,5 +28,23 @@ function addComment($author, $comment, $postId)
     else {
         header('Location: index.php?action=post&id=' . $postId);
     }
+
+}
+
+function addNewPost($titlePost, $contentPost)
+{
+    $affectedLines = insertPost($titlePost, $contentPost);
+
+    if ($affectedLines === false) {
+        throw new Exception('L\'ajout du post n\'a pas fonctionné');
+    }
+    else {
+        header('Location: index.php?action=listPosts');
+    }
+}
+
+function newPost()
+{
+    require('view/frontend_view/newPostView.php');
 }
 

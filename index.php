@@ -29,13 +29,27 @@ try {
             else {
                 throw new Exception('Certains champs sont vides');
             }
-
-        } 
+        }
+        elseif ($_GET['action'] == 'addNewPost') {
+            if (!empty($_POST['title']) AND !empty($_POST['content'])) {
+                addNewPost(htmlspecialchars($_POST['title']), nl2br(htmlspecialchars($_POST['content'])));
+            }
+            else {
+                throw new Exception('Certains champs sont vides');
+            }
+        }
+        elseif ($_GET['action'] == 'newPost') {
+            newPost();
+        }
+        else {
+            listPosts();
+        }
     } 
     else {
         listPosts();
     }
 }
 catch (Exception $e) {
-    echo 'Erreur : ' . $e -> getMessage();
+    $errorMessage = $e -> getMessage();
+    require('view/errorView.php');
 }
