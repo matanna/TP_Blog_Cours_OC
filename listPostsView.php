@@ -14,7 +14,7 @@ while($one_post = $posts -> fetch())
         </p>
         
         <p>
-            <a href="post.php?id=<?= $one_post['id']; ?>">Lien vers les commentaires</a>
+            <a href="index.php?action=post&amp;id=<?= $one_post['id']; ?>">Lien vers les commentaires</a>
         </p>
     </div>
 <?php

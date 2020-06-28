@@ -5,7 +5,7 @@
     <div class='posts'>
         <h1><span><?= $post['creation_date_fr']. '</span> : ' . $post['title'] ?></h1>
         <p><?= $post['content']; ?></p>
-        <p><a href="index.php">Retour à la page d'accueil</a></p>
+        <p><a href="index.php?action=listPosts">Retour à la page d'accueil</a></p>
     </div>
     
     <?php
