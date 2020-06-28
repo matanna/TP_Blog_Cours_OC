@@ -17,7 +17,7 @@ if (isset($_GET['action'])) {
                 
                 post();
             } else {
-                echo 'Oups !!! Ce billet n\'existe pas !! ';
+                echo 'Ce billet n\'existe pas !! ';
             } 
         } else {
             echo 'Erreur : Aucun identifiant de billet est envoyé';
