@@ -16,7 +16,22 @@
     <?php
     }
     $comments -> closeCursor();
-    ?>   
+    ?> 
+
+    <form method='post' action='index.php?action=addComment&amp;id=<?php echo $post['id']; ?>'>
+        <p>
+            <label for='author'>Votre pseudo :</label>
+            <input type='text' id='author' name='author' />
+        </p>
+        <p>
+            <label for='comment'>Votre commentaire :</label>
+            <textarea id='comment' name='comment' ></textarea>
+        </p>
+        <p>
+            <input type='submit' value='Envoyer' />
+        </p>
+
+    </form>  
 
 <?php $content = ob_get_clean(); ?>
 

@@ -35,6 +35,21 @@ function getComments($postId)
     return $comments;
 }
 
+function insertComment($author, $comment, $postId)
+{
+    $db = dbConnect();
+
+    $req = $db -> prepare('INSERT INTO comments(author, comment, comment_date, post_id) 
+                           VALUES(:author, :comment, NOW(), :post_id)' );
+    $req -> execute(array('author' => $author,
+                          'comment' => $comment,
+                          'post_id' => $postId)
+                    );
+
+    $affectedLines = $req;
+    return $affectedLines;
+}
+
 function getMaxPostId()
 {
     $db = dbConnect();
@@ -58,4 +73,5 @@ function dbConnect()
     }
 
 }
+
 ?>
