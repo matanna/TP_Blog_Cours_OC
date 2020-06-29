@@ -6,7 +6,7 @@ require_once('model/CommentManager.php');
 
 function listPosts()
 {
-    $postManager = new PostManager();
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
     $posts = $postManager -> getPosts();
 
     require('view/frontend_view/listPostsView.php');
@@ -14,7 +14,7 @@ function listPosts()
 
 function maxPostId()
 {
-    $postManager = new PostManager();
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
 
     $maxPostId = $postManager -> getMaxPostId();
     return $maxPostId;
@@ -22,10 +22,10 @@ function maxPostId()
 
 function post()
 {
-    $postManager = new PostManager();
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
     $post = $postManager -> getPost($_GET['id']);
         
-    $commentManager = new CommentManager(); 
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager(); 
     $comments = $commentManager -> getComments($_GET['id']);
 
    
@@ -35,7 +35,7 @@ function post()
 function addComment($author, $comment, $postId)
 {
 
-    $commentManager = new CommentManager();
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     $affectedLines = $commentManager -> insertComment($author, $comment, $postId);
 
     if ($affectedLines === false) {
@@ -49,7 +49,7 @@ function addComment($author, $comment, $postId)
 
 function addNewPost($titlePost, $contentPost)
 {
-    $postManager = new PostManager();
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
     $affectedLines = $postManager -> insertPost($titlePost, $contentPost);
 
     if ($affectedLines === false) {
