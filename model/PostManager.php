@@ -1,6 +1,8 @@
 <?php
 
-class PostManager 
+require_once('model/Manager.php');
+
+class PostManager extends Manager
 {
     public function getPosts()
     {
@@ -41,13 +43,6 @@ class PostManager
 
         $affectedLines = $req;
         return $affectedLines;
-    }
-
-    private function dbConnect()
-    {
-        $db = new PDO('mysql:host=localhost;port=3308;dbname=blog;charset=utf8','root','', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        
-        return $db;
     }
 }
 
