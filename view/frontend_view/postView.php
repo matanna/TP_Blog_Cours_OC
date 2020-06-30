@@ -13,6 +13,7 @@
     {
     ?>
         <p><?= $comment['comment_date_fr'] ?> - <?= $comment['author'] ?> : <?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+        <p><a href="index.php?action=modifyComment&amp;id=<?php echo $comment['id']; ?>&amp;post_id=<?php echo $comment['post_id']; ?>">Modifier</a></p>
     <?php
     }
     $comments -> closeCursor();

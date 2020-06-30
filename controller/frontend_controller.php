@@ -65,3 +65,24 @@ function newPost()
     require('view/frontend_view/newPostView.php');
 }
 
+function addModifyComment($author, $comment, $idComment, $postId)
+{
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+    $commentManager -> updateComment($author, $comment, $idComment);
+
+    if ($affectedLines === false) {
+        throw new Exception('La modification du commentaire n\'a pas fonctionné');
+    }
+    else {
+        header('Location: index.php?action=post&id=' . $postId);
+    }
+}
+
+function modifyComment($idcomment)
+{
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+    $comment = $commentManager -> displayComment($idcomment);
+    require('view/frontend_view/modifyCommentView.php');
+
+}
+

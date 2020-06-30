@@ -11,7 +11,7 @@ class CommentManager extends Manager
         $db = $this -> dbConnect();
 
         $req = $db -> prepare('SELECT DATE_FORMAT(comment_date, \'le %d/%m/%Y à %Hh%im%ss \') AS comment_date_fr, 
-                                                author, comment 
+                                                id, author, comment, post_id 
                                                 FROM comments 
                                                 WHERE post_id = ? 
                                                 ORDER BY comment_date DESC'
@@ -34,6 +34,30 @@ class CommentManager extends Manager
 
         $affectedLines = $req;
         return $affectedLines;
+    }
+
+    public function updateComment($author, $comment, $idComment)
+    {
+        $db = $this -> dbConnect();
+
+        $req = $db -> prepare('UPDATE comments SET author = ?, comment = ? WHERE id = ?');
+        $req -> execute(array($author, $comment, $idComment));
+
+        $affectedLines = $req;
+        return $affectedLines;
+    }
+
+    public function displayComment($idComment)
+    {
+        $db = $this -> dbConnect();
+
+        $req = $db -> prepare('SELECT DATE_FORMAT(comment_date, \'le %d/%m/%Y à %Hh%im%ss \') AS comment_date_fr, 
+                               id, author, comment
+                               FROM comments 
+                               WHERE id = ? ');
+        $req -> execute(array($idComment));
+        $comment = $req -> fetch();
+        return $comment;
     }
 
 }

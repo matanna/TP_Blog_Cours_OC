@@ -39,6 +39,20 @@ try {
         elseif ($_GET['action'] == 'newPost') {
             newPost();
         }
+        elseif ($_GET['action'] == 'modifyComment') {
+            modifyComment($_GET['id']);
+        }
+        elseif ($_GET['action'] == 'addmodifyComment') {
+            if (!empty($_POST['author']) AND !empty($_POST['comment']) AND isset($_GET['id']) AND isset($_GET['post_id'])) {
+                addModifyComment(htmlspecialchars($_POST['author']), nl2br(htmlspecialchars($_POST['comment'])), 
+                                 htmlspecialchars($_GET['id']), 
+                                 htmlspecialchars($_GET['post_id'])
+                );
+            }
+            else {
+                throw new Exception('Certains champs sont vides');
+            }
+        }
         else {
             listPosts();
         }
