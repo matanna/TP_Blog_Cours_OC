@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3308
--- Généré le :  lun. 29 juin 2020 à 17:44
+-- Généré le :  mar. 30 juin 2020 à 19:19
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.4.0
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `post_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_billets_id` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `comments`
@@ -47,7 +47,7 @@ INSERT INTO `comments` (`id`, `author`, `comment`, `comment_date`, `post_id`) VA
 (1, 'Mat', 'Alors dis quelque chose !!!', '2020-06-16 23:22:13', 1),
 (2, 'Lilou85260', 'Coucou papa !!!', '2020-06-16 23:22:38', 1),
 (3, 'lilou85260', 'Bah alors dis moi bonjour', '2020-06-16 23:23:21', 2),
-(4, 'Anna', 'Commentaires 25643............', '2020-06-16 23:23:50', 2),
+(4, 'Anna', 'Commentaire 23', '2020-06-16 23:23:50', 2),
 (5, 'Mat', 'wyksegcrfbygxdvbcgc lcsgfbcyt!!!!!!!!!!!', '2020-06-16 23:24:09', 2),
 (6, 'Goldorak', 'GO !!!!!!!!\r\nYoupii!!!!', '2020-06-16 23:24:59', 3),
 (7, 'Dexter', 'Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou Miaou ', '2020-06-16 23:25:31', 3),
@@ -60,9 +60,9 @@ INSERT INTO `comments` (`id`, `author`, `comment`, `comment_date`, `post_id`) VA
 (15, 'Mathieu', 'Salut a tous', '0000-00-00 00:00:00', 2),
 (16, 'Mathieu', 'Test d\'un insert et d\'un affichage', '0000-00-00 00:00:00', 2),
 (17, 'Mathieu', 'je tente ce test', '2020-06-17 21:47:50', 1),
-(18, 'mateo85', 'houla encore un comment', '2020-06-24 23:26:11', 2),
+(18, 'Lilou', 'Ca marche ou ca marche pas', '2020-06-24 23:26:11', 2),
 (19, 'pkuck', 'sctgssretxzqs', '2020-06-28 14:09:38', 3),
-(20, 'pkuck', 'tgyedrhygefvrd', '2020-06-28 14:09:45', 3),
+(20, 'anais', 'coucou', '2020-06-28 14:09:45', 3),
 (21, 'phuck', 'Je m\'appelle Phuck !!!', '2020-06-28 14:10:26', 1),
 (22, 'phuck', 'Je m\'appelle Phuck !!!', '2020-06-28 14:10:39', 1),
 (23, 'phuck', 'Je m\'appelle Phuck !!!', '2020-06-28 14:12:52', 1),
@@ -76,7 +76,8 @@ INSERT INTO `comments` (`id`, `author`, `comment`, `comment_date`, `post_id`) VA
 (31, 'fdwgwddg', 'ttgghhyy', '2020-06-28 15:08:09', 2),
 (32, 'fgsd', 'nnbbvv', '2020-06-28 15:08:15', 2),
 (33, 'phuck', 'fghsdhd', '2020-06-28 17:33:49', 2),
-(34, 'pkuck', 'tentative !!!', '2020-06-28 18:47:36', 4);
+(34, 'pkuck', 'tentative !!!', '2020-06-28 18:47:36', 4),
+(35, 'pkuck', 'je sais toujours pas quoi dire<br />\r\n', '2020-06-29 20:01:22', 6);
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `creation_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `posts`
@@ -102,7 +103,8 @@ INSERT INTO `posts` (`id`, `title`, `content`, `creation_date`) VALUES
 (2, '2eme article', 'Voici mon 2eme post et je ne sais toujours pas quoi dire. décidement.....', '2020-06-16 23:19:41'),
 (3, 'Sujet php', 'Voici le 3eme post, on va parler de php que je commence tout juste a apprendre.qsd sgsfqc sdfddfqs sdfdvdfhy gydggj , rdtfygg efegy sefygry (b(ygfeg esvyfysg ', '2020-06-16 23:21:03'),
 (4, 'Ajout d\'un nouvel article', 'lorem ipsum hhggftyrgh', '2020-06-28 18:46:18'),
-(5, '', '', '2020-06-28 18:48:13');
+(5, '', '', '2020-06-28 18:48:13'),
+(6, 'PHP C\'est la vie !!!', 'PHP PHP PHP PHP PHP PHPPHP PHPPHPPHPPHPPHP v PHP', '2020-06-29 20:00:58');
 
 --
 -- Contraintes pour les tables déchargées
